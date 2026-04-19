@@ -367,7 +367,17 @@ Output is printed to terminal and saved automatically to `eval_compare_<n>.txt`.
 
 ---
 
-## Evaluation Results (n=200, Qwen2.5-14B-Instruct)
+## Evaluation Results
+
+### Retrieval Hit Rate (n=200, no LLM)
+
+| Metric | Baseline | Improved | Delta |
+|---|---:|---:|---:|
+| Hit@1 | 0.615 | 0.835 | **+0.220** |
+| Hit@3 | 0.760 | 0.925 | **+0.165** |
+| Hit@5 | 0.815 | 0.950 | **+0.135** |
+
+### Generation Quality (n=200, Qwen2.5-14B-Instruct)
 
 | Metric | Baseline | Improved | Delta |
 |---|---:|---:|---:|
