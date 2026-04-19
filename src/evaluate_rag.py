@@ -6,8 +6,8 @@ Modes:
   --mode ablation    Hit@{1,3,5} across 5 incremental retrieval configs.
   --mode full        Cosine / Token Overlap / Jaccard / BLEU-1 / ROUGE-L
                      + citation accuracy. Requires --llm.
-  --mode compare     Baseline vs Improved on all generation metrics.
-                     Requires --llm.
+  --mode compare     Baseline vs Improved Hit@k (no LLM needed).
+                     Add --llm to compare generation metrics instead.
 
 Output:
   Results are always saved to --out (default: eval_<mode>_<n>.txt).
@@ -17,6 +17,7 @@ Examples:
     python src/evaluate_rag.py --mode retrieval --n 200
     python src/evaluate_rag.py --mode ablation  --n 100
     python src/evaluate_rag.py --mode full      --n 100 --llm vllm:Qwen2.5-14B-Instruct
+    python src/evaluate_rag.py --mode compare   --n 200
     python src/evaluate_rag.py --mode compare   --n 100 --llm vllm:Qwen2.5-14B-Instruct
 """
 from __future__ import annotations
@@ -208,6 +209,37 @@ def eval_full(pipeline, embed_fn, df: pd.DataFrame, n: int) -> tuple[dict, list[
     return _eval_generation(pipeline, embed_fn, df, n, {}, "full eval")
 
 
+def eval_compare_retrieval(retriever, df: pd.DataFrame, n: int) -> tuple[dict, dict]:
+    baseline_kw = dict(use_bm25=False, use_reranker=False,
+                       use_freshness=False, explicit_boost=False, use_parents=False)
+    improved_kw = dict(use_bm25=True,  use_reranker=True,
+                       use_freshness=True,  explicit_boost=True,  use_parents=True)
+    print("\n[1/2] Evaluating BASELINE retrieval ...")
+    b = _hits_for(retriever, df, n, baseline_kw)
+    print("\n[2/2] Evaluating IMPROVED retrieval ...")
+    im = _hits_for(retriever, df, n, improved_kw)
+    return b, im
+
+
+def _build_compare_retrieval_report(b: dict, im: dict, n: int) -> list[str]:
+    hr = "=" * 52
+    lines = [hr, "  RETRIEVAL COMPARISON (Baseline vs Improved)",
+             f"  n = {n}", hr, ""]
+    lines += [f"  {'Config':<22} {'Hit@1':>7} {'Hit@3':>7} {'Hit@5':>7}",
+              "  " + "-" * 45,
+              f"  {'Baseline':<22} {b['Hit@1']:>7.3f} {b['Hit@3']:>7.3f} {b['Hit@5']:>7.3f}",
+              f"  {'Improved':<22} {im['Hit@1']:>7.3f} {im['Hit@3']:>7.3f} {im['Hit@5']:>7.3f}"]
+    delta = {k: im[k] - b[k] for k in ("Hit@1", "Hit@3", "Hit@5")}
+    lines.append(f"  {'Delta':<22} {delta['Hit@1']:>+7.3f} {delta['Hit@3']:>+7.3f} {delta['Hit@5']:>+7.3f}")
+    lines += ["", "Markdown:",
+              "| Config | Hit@1 | Hit@3 | Hit@5 |",
+              "|---|---:|---:|---:|",
+              f"| Baseline | {b['Hit@1']:.3f} | {b['Hit@3']:.3f} | {b['Hit@5']:.3f} |",
+              f"| Improved | {im['Hit@1']:.3f} | {im['Hit@3']:.3f} | {im['Hit@5']:.3f} |",
+              f"| **Delta** | **{delta['Hit@1']:+.3f}** | **{delta['Hit@3']:+.3f}** | **{delta['Hit@5']:+.3f}** |"]
+    return lines
+
+
 def eval_compare(pipeline, embed_fn, df: pd.DataFrame, n: int) -> tuple[dict, dict, list[dict], list[dict]]:
     baseline_kw = dict(use_bm25=False, use_reranker=False,
                        use_freshness=False, explicit_boost=False, use_parents=False)
@@ -314,8 +346,9 @@ def parse_args():
                    default="retrieval")
     p.add_argument("--n",    type=int, default=200,
                    help="Max questions to evaluate")
-    p.add_argument("--llm",  default="vllm:Qwen2.5-14B-Instruct",
-                   help="LLM for --mode full/compare (vllm:<model> | gemini-* | HF repo)")
+    p.add_argument("--llm",  default=None,
+                   help="LLM for --mode full/compare with generation metrics. "
+                        "Omit to run --mode compare as retrieval-only (no LLM needed).")
     p.add_argument("--quant", choices=["none", "4bit", "8bit"], default="none")
     p.add_argument("--out",  default=None,
                    help="Output file path (default: eval_<mode>_<n>.txt)")
@@ -348,18 +381,24 @@ def main():
         lines = _build_ablation_report(rows, n)
         _save_and_print(lines, out_path)
 
+    elif args.mode == "compare" and args.llm is None:
+        b, im = eval_compare_retrieval(retriever, df, n)
+        lines = _build_compare_retrieval_report(b, im, n)
+        _save_and_print(lines, out_path)
+
     else:
+        llm_name = args.llm or "vllm:Qwen2.5-14B-Instruct"
         from generation.llm_providers import make_llm
         from generation.pipeline import RAGPipeline
-        print(f"\nLoading LLM: {args.llm} ...")
-        llm_fn   = make_llm(args.llm, quant=args.quant)
+        print(f"\nLoading LLM: {llm_name} ...")
+        llm_fn   = make_llm(llm_name, quant=args.quant)
         embed_fn = lambda texts: retriever.embed_model.encode(
             texts, normalize_embeddings=True, convert_to_numpy=True)
         pipeline = RAGPipeline(llm=llm_fn, retriever=retriever)
 
         if args.mode == "full":
             scores, samples = eval_full(pipeline, embed_fn, df, n)
-            lines = _build_full_report(scores, samples, n, args.llm)
+            lines = _build_full_report(scores, samples, n, llm_name)
             _save_and_print(lines, out_path)
 
         else:  # compare
