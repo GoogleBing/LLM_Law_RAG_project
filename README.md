@@ -2,6 +2,7 @@
 
 A Retrieval-Augmented Generation (RAG) system for querying Vietnamese legal documents (~16,400 documents). Combines hybrid retrieval (FAISS + BM25 + cross-encoder reranking), freshness-aware scoring, parent-child chunking, and post-hoc citation verification.
 
+For full dataset and chunking results you can go to my Drive: [LLM_Law_RAG_project](https://drive.google.com/drive/folders/1jrUPAUIFJqF0-8B1nsN8dTQHXIHCDuYG?usp=sharing)
 ---
 
 ## System Architecture
