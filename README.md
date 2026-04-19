@@ -349,18 +349,21 @@ python src/evaluate_rag.py --mode full --n 100 --llm vllm:Qwen2.5-14B-Instruct
 
 Metrics reported: Cosine Similarity, Token Overlap, Jaccard, BLEU-1, ROUGE-L, Citation Accuracy, Citation Coverage.
 
-### 5d — Baseline vs Improved Comparison Report
+### 5d — Baseline vs Improved Comparison
 
-Runs both the baseline (dense-only) and the full improved pipeline, then writes a detailed text report:
+**Retrieval only (no LLM needed):** compares Hit@1/3/5 between dense-only baseline and full improved pipeline.
 
 ```bash
-python src/evaluate_report.py \
-    --llm vllm:Qwen2.5-14B-Instruct \
-    --n 200 \
-    --out report_result.txt
+python src/evaluate_rag.py --mode compare --n 200
 ```
 
-Output: `report_result.txt` with a metric comparison table and 5 sample answers for each system.
+**With LLM:** compares all generation metrics (Cosine, BLEU, ROUGE...) between baseline and improved.
+
+```bash
+python src/evaluate_rag.py --mode compare --n 100 --llm vllm:Qwen2.5-14B-Instruct
+```
+
+Output is printed to terminal and saved automatically to `eval_compare_<n>.txt`.
 
 ---
 

@@ -154,6 +154,12 @@ python src/evaluate_rag.py --mode ablation --n 200
 # PLUS citation_accuracy and citation_coverage.
 python src/evaluate_rag.py --mode full --n 100 --llm gemini-2.5-flash
 python src/evaluate_rag.py --mode full --n 100 --llm Qwen/Qwen2.5-7B-Instruct --quant 4bit
+
+# Baseline vs Improved comparison — retrieval only (no LLM needed)
+python src/evaluate_rag.py --mode compare --n 200
+
+# Baseline vs Improved comparison — generation metrics (requires LLM)
+python src/evaluate_rag.py --mode compare --n 100 --llm vllm:Qwen2.5-14B-Instruct
 ```
 
 Reads `RES.xlsx` (`Câu Hỏi`, `Trả lời`, `Số hiệu VBPL (Trích xuất)`).
