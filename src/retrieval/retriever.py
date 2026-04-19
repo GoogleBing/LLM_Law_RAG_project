@@ -16,7 +16,7 @@ Pipeline per query:
      successor văn bản từ 1-hop replaced_by map).
 
 Retrieve accepts ablation flags (use_bm25 / use_reranker / use_freshness /
-explicit_boost / use_parents) so evaluate.py can report a clean component
+explicit_boost / use_parents) so evaluate_rag.py can report a clean component
 study.
 
 Reranker is lazy-loaded; if the model fails to load, retrieval gracefully

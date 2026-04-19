@@ -64,7 +64,7 @@ RAG Chatbox/
     ├── build_index.py         build FAISS + BM25 + parents (run once)
     ├── chat.py                interactive multi-turn chatbot
     ├── demo.py                one-shot demo (retrieval + optional LLM)
-    ├── evaluate.py            retrieval / ablation / full-answer metrics
+    ├── evaluate_rag.py            retrieval / ablation / full-answer metrics
     ├── evaluate_report.py     baseline vs improved comparison report
     ├── rag_pipeline.py        backward-compat re-export facade
     │
@@ -325,7 +325,7 @@ Run from the **project root** (not from inside `src/`).
 Measures whether the correct source document appears in the top-k retrieved results:
 
 ```bash
-python src/evaluate.py --mode retrieval --n 200
+python src/evaluate_rag.py --mode retrieval --n 200
 ```
 
 Output: `Hit@1`, `Hit@3`, `Hit@5` scores and number of evaluated questions.
@@ -335,7 +335,7 @@ Output: `Hit@1`, `Hit@3`, `Hit@5` scores and number of evaluated questions.
 Measures the contribution of each retrieval component incrementally:
 
 ```bash
-python src/evaluate.py --mode ablation --n 100
+python src/evaluate_rag.py --mode ablation --n 100
 ```
 
 Tests 5 configurations: **Dense only → +BM25 → +Reranker → +Freshness → +Boost (full)**.  
@@ -344,7 +344,7 @@ Output includes a Markdown table you can paste directly into a report.
 ### 5c — Full Answer Quality Metrics (requires LLM)
 
 ```bash
-python src/evaluate.py --mode full --n 100 --llm vllm:Qwen2.5-14B-Instruct
+python src/evaluate_rag.py --mode full --n 100 --llm vllm:Qwen2.5-14B-Instruct
 ```
 
 Metrics reported: Cosine Similarity, Token Overlap, Jaccard, BLEU-1, ROUGE-L, Citation Accuracy, Citation Coverage.

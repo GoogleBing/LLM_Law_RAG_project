@@ -67,7 +67,7 @@ src/
 ├── rag_pipeline.py            — backward-compat facade (re-exports)
 ├── build_index.py             — CLI: build FAISS + BM25 + parents  (run once)
 ├── demo.py                    — CLI: one-shot question → contexts + answer + citation check
-├── evaluate.py                — CLI: retrieval / full / ablation metrics
+├── evaluate_rag.py                — CLI: retrieval / full / ablation metrics
 │
 ├── indexing/                  # Stage 1 : parsed_documents.jsonl → index
 │   ├── chunker.py             — parent (Điều) + child (sub-segment) chunker
@@ -143,17 +143,17 @@ python src/demo.py --llm Qwen/Qwen2.5-7B-Instruct --quant 4bit "..."
 
 ```bash
 # Hit@{1,3,5} by so_hieu — fast, no LLM
-python src/evaluate.py --mode retrieval --n 200
+python src/evaluate_rag.py --mode retrieval --n 200
 
 # Component ablation: dense only → +BM25 → +reranker → +freshness → +boost
-python src/evaluate.py --mode ablation --n 200
+python src/evaluate_rag.py --mode ablation --n 200
 #    → prints a table with Hit@1/3/5 for each config (+ markdown block you
 #      can paste straight into the report).
 
 # Full answer metrics (cosine / token_overlap / jaccard / BLEU-1 / ROUGE-L)
 # PLUS citation_accuracy and citation_coverage.
-python src/evaluate.py --mode full --n 100 --llm gemini-2.5-flash
-python src/evaluate.py --mode full --n 100 --llm Qwen/Qwen2.5-7B-Instruct --quant 4bit
+python src/evaluate_rag.py --mode full --n 100 --llm gemini-2.5-flash
+python src/evaluate_rag.py --mode full --n 100 --llm Qwen/Qwen2.5-7B-Instruct --quant 4bit
 ```
 
 Reads `RES.xlsx` (`Câu Hỏi`, `Trả lời`, `Số hiệu VBPL (Trích xuất)`).
@@ -251,7 +251,7 @@ chunks. Each citation is bucketed:
 | `partial` | so_hieu matches a chunk but Điều N is absent / unparsed |
 | `hallucinated` | so_hieu not in any retrieved chunk — LLM fabricated it |
 
-The demo CLI prints this as a one-screen summary; `evaluate.py --mode full`
+The demo CLI prints this as a one-screen summary; `evaluate_rag.py --mode full`
 reports `citation_accuracy` (ok / total) and `citation_coverage` (fraction of
 answers that cited at least one source).
 
