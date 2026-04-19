@@ -1,0 +1,28 @@
+# ---- Core numerics ----
+numpy>=1.26,<3
+pandas>=2.1
+openpyxl>=3.1          # read RES.xlsx
+
+# ---- Indexing / retrieval ----
+faiss-cpu>=1.8         # dense vector index (use faiss-gpu if your server has CUDA + the wheel)
+rank-bm25>=0.2.2       # lexical BM25
+
+# ---- Embeddings & reranker ----
+sentence-transformers>=3.0   # e5-base-v2 + BAAI/bge-reranker-v2-m3
+transformers>=4.44
+torch>=2.2             # CPU or CUDA build matching your server
+
+# ---- Local LLM (optional, only if you use provider="hf") ----
+accelerate>=0.33
+bitsandbytes>=0.43 ; sys_platform == "linux"   # 4-bit quant on GPU, Linux only
+
+# ---- Cloud LLM (optional, only if you use provider="gemini") ----
+google-genai>=0.3.0
+python-dotenv>=1.0     # loads .env for GEMINI_API_KEY / VLLM_API_KEY
+
+# ---- vLLM client (optional, if you call a vLLM OpenAI-compat server) ----
+openai>=1.40           # used by llm_providers._make_vllm
+# vllm>=0.6.0          # install separately ON THE SERVER that hosts the model
+
+# ---- Utilities ----
+tqdm>=4.66

@@ -1,0 +1,46 @@
+# Secrets
+.env
+
+# Large data files (download separately — see README for links)
+export_1/
+parsed_documents.jsonl
+parsed_documents_report.csv
+
+# Generated index (rebuild with: python src/build_index.py)
+index/
+doc_meta.pkl
+
+# Generated outputs
+report_result.txt
+report.txt
+missing_documents.txt
+
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.blg
+*.bbl
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,38 @@
+{
+    "so_hieu": "002-TT-LB", 
+    "loai_van_ban": "THÔNG TƯ", 
+    "co_quan_ban_hanh": "BỘ GIÁO DỤC-BỘ NỘI VỤ", 
+    "ngay_ban_hanh": "27/01/1957", 
+    "tieu_de": "VỀ VẤN ĐỀ CỬ CÁN BỘ ĐI HỌC CÁC TRƯỜNG CHUYÊN NGHIỆP VÀ BỔ TÚC VĂN HÓA HƯỞNG NGUYÊN LƯƠNG", 
+    "ten_day_du": "Thông tư liên bộ 002-TT-LB năm 1957 vấn đề cử cán bộ đi học các trường chuyên nghiệp và bổ túc văn hóa hưởng nguyên lương do liên bộ Bộ Giáo Dục- Bộ Nội Vụ ban hành", 
+    "nguoi_ky": "Nguyễn Văn Huyên, Phạm Văn Bạch", 
+    "linh_vuc": ["Lao động - Tiền lương", "Giáo dục"], 
+    "ngay_hieu_luc": "11/02/1957", 
+    "tinh_trang": "Không còn phù hợp", 
+    "muc_luc": [
+        "THÔNG TƯ LIÊN BỘ VỀ VẤN ĐỀ CỬ CÁN BỘ ĐI HỌC CÁC TRƯỜNG CHUYÊN NGHIỆP VÀ BỔ TÚC VĂN HÓA HƯỞNG NGUYÊN LƯƠNG", 
+        "1) Lịch sử rõ ràng, không có sai lầm nghiêm trọng, không tham ô hủ hóa thành hệ thống, không tự do vô kỷ luật, có biểu hiện tốt trong công tác.", 
+        "2) Thời gian công tác ở các cơ quan, từ cấp huyện: 3 năm trở lên (đối với những cán bộ, công nhân viên cử đi học năm 1956 phải có thời gian công tác chính thức ở trong biên chế ít nhất từ năm 1953).", 
+        "3) Tuổi tối đa: không quá 30 tuổi (vì sau còn chuyển sang học các trường chuyên nghiệp).", 
+        "4) Sức khỏe: Không có bệnh truyền nhiễm, kinh niên.", "5) Trình độ văn hóa: từ lớp 4 phổ thông trở lên."
+    ], 
+    "van_ban_lien_quan": [
+        {
+            "loai": "lien_quan", 
+            "mo_ta": "Thông tư 23-TT/LB năm 1960 về chính sách đối với cán bộ, công nhân, quân nhân vào học các trường Đại học và trung cấp chuyên nghiệp năm 1960-1961 do Bộ Giáo dục và Bộ Nội vụ ban hành", 
+            "id": "22191"
+        }, 
+        {
+            "loai": "lien_quan", 
+            "mo_ta": "Thông tư 22-TT/LB năm 1959 về chính sách đối với cán bộ, công nhân, quân nhân thi vào các trường đại học và trung cấp chuyên nghiệp năm 1959-1960 do Bộ Nội Vụ- Bộ Giáo Dục ban hành.", 
+            "id": "22761"
+        }, 
+        {
+            "loai": "lien_quan", 
+            "mo_ta": "Chỉ thị 114-TTg năm 1957 về tăng cường lãnh đạo công tác xóa nạn mù chũ và bổ túc văn hóa và chính sách đối với cán bộ, giáo viên Bình dân học vụ do Thủ Tướng Chính Phủ ban hành", 
+            "id": "21323"
+            }
+    ], 
+    "noi_dung": "Vấn đề cử cán bộ đi học hưởng nguyên lương là một chính sách đãi ngộ đối với những cán bộ, nhân viên có những tiêu chuẩn nhất định, có thành tích công tác và thời gian phục vụ xứng đáng, nên việc thực hiện cần phải thống nhất để:\n\n- Đề cao ý nghĩa của chính sách đó của Đảng và Chính phủ đối với cán bộ công nhân viên.\n\n- Tránh những hiện tượng so bì giữa cán bộ ngành này với ngành khác, giữa cán bộ được cử đi học và cán bộ công tác ở cơ quan.\n\nTrong Thông tư số 72-VP-CP ngày 2/6/1956 của Bộ Nội vụ đã quy định tiêu chuẩn cán bộ, công nhân viên có thể cử đi học trường Bổ túc văn hóa công nông, hưởng nguyên lương như sau:\n\n1) Lịch sử rõ ràng, không có sai lầm nghiêm trọng, không tham ô hủ hóa thành hệ thống, không tự do vô kỷ luật, có biểu hiện tốt trong công tác.\n\n2) Thời gian công tác ở các cơ quan, từ cấp huyện: 3 năm trở lên (đối với những cán bộ, công nhân viên cử đi học năm 1956 phải có thời gian công tác chính thức ở trong biên chế ít nhất từ năm 1953).\n\n3) Tuổi tối đa: không quá 30 tuổi (vì sau còn chuyển sang học các trường chuyên nghiệp).\n\n4) Sức khỏe: Không có bệnh truyền nhiễm, kinh niên.\n\n5) Trình độ văn hóa: từ lớp 4 phổ thông trở lên.\n\nTrong Thông tư số 833-CB-4 ngày 30/6/1956 của Bộ Nội vụ đã quy định tiêu chuẩn cán bộ, công nhân viên có thể cử đi học các trường Đại học và chuyên nghiệp, hưởng nguyên lương như sau:\n\n- Tiêu chuẩn về chính trị, về sức khỏe: cũng như đối với cán bộ công nhân viên cử đi học trường Bổ túc văn hóa công nông;\n\n- Phải là cán bộ chính thức trong biên chế cơ quan từ 3 năm trở lên, luôn luôn tích cực công tác, đã được nêu là xuất sắc hoặc đã được khen thưởng, có nhiều triển vọng tiến bộ.\n\n- Chưa quá 35 tuổi.\n\n- Có đủ trình độ văn hóa yêu cầu của nhà trường. Nếu nhà trường yêu cầu phải qua kỳ thi kiểm tra văn hóa mới được vào học, thì các cán bộ được cử đi học cũng phải dự thi, không được miễn.\n\nVề điều kiện thời gian công tác, chỉ có thể châm chước đôi chút trong một vài trường hợp thật đặc biệt, và đối với cán bộ miền Nam.\n\nLiên Bộ giáo dục - Nội vụ đề nghị các Bộ, các cơ quan, các Ủy ban hành chính các khu và tỉnh lưu ý những tiêu chuẩn trên khi cử cán bộ đi học hưởng nguyên lương.\n\nĐể các trường có tài liệu thống nhất và chính xác để thanh toán lương bổng cho những cán bộ, công nhân viên được cử đi học hưởng nguyên lương, Liên Bộ quy định thủ tục cử  cán bộ viên đi học như sau:\n\n- Ở Trung ương: do Nghị định của Bộ sở quan cử, theo đề nghị của cơ quan có cán bộ được cử đi học.\n\n- Ở Hà Nội, Hải Phòng, do quyết định của Ủy ban hành chính thành phố cử, theo đề nghị của cơ quan có cán bộ được cử đi học.\n\n- Ở địa phương: do quyết định của Ủy ban hành chính khu hay liên khu cử, theo đề nghị của cơ quan chuyên môn khu và Ủy ban hành chính tỉnh. Ủy ban hành chính khu có thể ủy nhiệm cho Ủy ban hành chính tỉnh ta quyết định cử, theo đề nghị của các ty chuyên môn có cán bộ được cử đi học, nhưng phải báo cáo cho Ủy ban hành chính khu và khu chuyên môn biết.\n\n- Đối với quân nhân phục vụ viên chuyên ngành đi học: do nghị định của Bộ Tư lệnh hoặc quyết định của cấp trung đoàn trở lên.\n\nĐối với cán bộ của Mặt trận, Đảng, các Đoàn thể, do quyết định của các cấp tỉnh trở lên.\n\nNhững giấy giới thiệu đều coi như không hợp lệ để hưởng nguyên lương.\n\nCòn trường hợp những cán bộ không được cử đi học, có nguyện vọng xin đi học và được cơ quan đồng ý, cơ quan vẫn có thể cấp giấy giới thiệu đề nghị nhà trường giúp đỡ và chiếu cố trong việc xét cấp học bổng.\n\nTừ khóa học sau trở đi, nếu cơ quan cử cán bộ đi học chưa gửi đủ hồ sơ hợp lệ, các trường nhất thiết sẽ không thanh toán lương bổng, mà chỉ coi như học sinh thường.\n\nKT. BỘ TRƯỞNG BỘ NỘI VỤ\n\nTHỨ TRƯỞNG\n\nPhạm Văn Bạch\n\nBỘ TRƯỞNG\n\nBỘ GIÁO DỤC", 
+    "_file": "002-TT-LB.txt"
+}
